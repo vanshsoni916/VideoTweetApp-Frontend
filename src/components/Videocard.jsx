@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-const formatViews = (views)=>{
-    if(views>=1000000)return `${(views/1000000).toFixed(1)}M views`
-    if(views>=1000)return `${(views/1000).toFixed(1)}K views`
+const formatViews = (views) => {
+  if (views >= 1000000) return `${(views / 1000000).toFixed(1)}M views`
+  if (views >= 1000) return `${(views / 1000).toFixed(1)}K views`
 
-    return `${views}views`
+  return `${views} views`
 }
 
-const formatDate = (date)=>{
-    return new Date(date).toLocaleDateString('en-IN',{
-        year:'numeric',
-        month:'short',
-        day:'numeric'
-    })
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  })
 }
 
 const VideoCard = ({ video }) => {

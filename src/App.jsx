@@ -8,6 +8,7 @@ import Layout from "./components/Layout.jsx"
 import Home from "./pages/Home.jsx"
 import VideoPlayer from "./pages/VideoPlayer.jsx"
 import ForgotPassword from "./pages/ForgotPassword.jsx"
+import UploadVideo from "./pages/UploadVideo.jsx"
 
 
 function App() {
@@ -37,6 +38,16 @@ function App() {
         }/>
 
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
+
+        <Route path="/upload" element={
+          <ProtectedRoute>
+            <Layout>
+              <UploadVideo/>
+            </Layout>
+          </ProtectedRoute>
+        }/>
+
+
       </Routes>
     </BrowserRouter>
   )

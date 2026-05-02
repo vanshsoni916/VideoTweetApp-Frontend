@@ -10,7 +10,7 @@ const formatViews = (views) => {
     if (views >= 1000000) return `${(views / 1000000).toFixed(1)}M views`
     if (views >= 1000) return `${(views / 1000).toFixed(1)}K views`
 
-    return `${views}views`
+    return `${views} views`
 }
 
 const formatDate = (date) => {
@@ -136,7 +136,7 @@ const VideoPlayer = () => {
             {/* meta row — views, date, like button */}
             <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
                 <p className="text-gray-400 text-sm">
-                    {formatViews(video.views)} views · {formatDate(video.createdAt)}
+                    {formatViews(video.views)} · {formatDate(video.createdAt)}
                 </p>
 
                 {/* like button */}
