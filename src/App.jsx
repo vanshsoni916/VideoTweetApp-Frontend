@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx"
 import VideoPlayer from "./pages/VideoPlayer.jsx"
 import ForgotPassword from "./pages/ForgotPassword.jsx"
 import UploadVideo from "./pages/UploadVideo.jsx"
+import SearchResult from "./pages/SearchResult.jsx"
 
 
 function App() {
@@ -47,7 +48,13 @@ function App() {
           </ProtectedRoute>
         }/>
 
-
+        <Route path="/search" element={
+          <ProtectedRoute>
+            <Layout>
+              <SearchResult/>
+            </Layout>
+          </ProtectedRoute>
+        }/>
       </Routes>
     </BrowserRouter>
   )

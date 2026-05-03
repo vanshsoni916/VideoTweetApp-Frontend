@@ -39,3 +39,11 @@ export const togglePublishStatus = async(videoId)=>{
     const response = await axiosInstance.patch(`/videos/c/${videoId}/toggle_publish`)
     return response.data.data
 }
+
+export const searchVideos = async(query)=>{
+    const response = await axiosInstance.get('/videos/search',{
+        params :{page:1,limit:8,query}
+    })
+
+    return response.data.data.docs || [] 
+}

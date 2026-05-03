@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
+import Searchbar from './Searchbar'
 
 const Navbar = () => {
 
@@ -26,16 +27,9 @@ const Navbar = () => {
         Video<span className="text-blue-500">Tweet</span>
       </Link>
 
-    
-      <div className="hidden md:flex items-center bg-gray-800 border border-gray-700 rounded-lg overflow-hidden w-full max-w-sm mx-6">
-        <input
-          type="text"
-          placeholder="Search videos..."
-          className="bg-transparent text-white text-sm px-4 py-2 outline-none w-full placeholder-gray-500"
-        />
-        <button className="px-3 py-2 text-gray-400 hover:text-white transition cursor-pointer">
-          &#128269;
-        </button>
+
+      <div className="hidden md:flex flex-1 mx-6 max-w-sm">
+        <Searchbar />
       </div>
 
       <div className="relative">
