@@ -41,8 +41,10 @@ export const togglePublishStatus = async(videoId)=>{
 }
 
 export const searchVideos = async(query)=>{
+    const broadQuery = query.slice(0,3)
+
     const response = await axiosInstance.get('/videos/search',{
-        params :{page:1,limit:8,query}
+        params :{page:1,limit:50,query:broadQuery}
     })
 
     return response.data.data.docs || [] 
