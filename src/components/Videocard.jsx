@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const formatViews = (views) => {
   if (views >= 1000000) return `${(views / 1000000).toFixed(1)}M views`
@@ -16,8 +16,9 @@ const formatDate = (date) => {
 }
 
 const VideoCard = ({ video }) => {
+  const navigate = useNavigate()
   return (
-    <Link to={`/video/${video._id}`} className="group flex flex-col gap-2">
+    <div onClick={() => navigate(`/video/${video._id}`)} className="group flex flex-col gap-2 cursor-pointer">
 
       {/* thumbnail */}
       <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-800">
@@ -47,7 +48,7 @@ const VideoCard = ({ video }) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-white text-xs font-semibold">
-              {video.owner?.fullName?.charAt(0).toUpperCase()}
+              {video.owner?.username?.charAt(0).toUpperCase()}
             </div>
           )}
         </div>
@@ -58,7 +59,15 @@ const VideoCard = ({ video }) => {
             {video.title}
           </h3>
           {/* channel name */}
-          <p className="text-gray-400 text-xs">{video.owner?.fullName}</p>
+          {/* <p className="text-gray-400 text-xs">{video.owner?.fullName}</p> */}
+          {/*redirect to user profile/channel profile*/}
+          <Link
+            to={`/profile/${video?.owner?.username}`}
+            onClick={(e) => e.stopPropagation()}
+            className="text-gray-400 text-xs hover:text-white transition"
+          >
+            {video.owner?.username}
+          </Link>
           {/* views and date */}
           <p className="text-gray-500 text-xs">
             {formatViews(video.views)} · {formatDate(video.createdAt)}
@@ -66,8 +75,7 @@ const VideoCard = ({ video }) => {
         </div>
 
       </div>
-
-    </Link>
+    </div>
   )
 }
 

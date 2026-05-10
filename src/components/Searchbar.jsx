@@ -95,30 +95,31 @@ const Searchbar = () => {
 
       //now add final result inside the suggestions:
 
-      const fuzzyMatch = videos.filter(video =>
-        isFuzzyMatch(searchQuery, video.title)
-      )
+      // const fuzzyMatch = videos.filter(video =>
+      //   isFuzzyMatch(searchQuery, video.title)
+      // )
 
-      const sorted = fuzzyMatch.sort((a, b) => {
-        const distA = levenshtein(
-          searchQuery.toLowerCase(),
-          a.title.toLowerCase()
-        )
-        const distB = levenshtein(
-          searchQuery.toLowerCase(),
-          b.title.toLowerCase()
-        )
+      // const sorted = fuzzyMatch.sort((a, b) => {
+      //   const distA = levenshtein(
+      //     searchQuery.toLowerCase(),
+      //     a.title.toLowerCase()
+      //   )
+      //   const distB = levenshtein(
+      //     searchQuery.toLowerCase(),
+      //     b.title.toLowerCase()
+      //   )
 
-        return distanceA - distanceB
-      })
+      //   return distA - distB
+      // })
 
-      setSuggestions(sorted.slice(0, 6))
-      setDropDown(sorted.length > 0)
+      setSuggestions(videos.slice(0, 6))
+      setDropDown(videos.length > 0)
 
     } catch (error) {
       console.log('Search Failed ', error)
     } finally {
       setLoading(false)
+      setDropDown(false)
     }
   }
 
