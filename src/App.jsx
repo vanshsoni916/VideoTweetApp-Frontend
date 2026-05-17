@@ -12,6 +12,7 @@ import UploadVideo from "./pages/UploadVideo.jsx"
 import SearchResult from "./pages/SearchResult.jsx"
 import Profile from "./pages/Profilepage.jsx"
 import { Navigate } from "react-router-dom"
+import Tweet from "./pages/Tweet.jsx"
 
 const ProfileRedirect = () => {
   const { user } = useAuth()
@@ -77,6 +78,15 @@ function App() {
             </Layout>
           </ProtectedRoute>
         } />
+
+        <Route path="/tweets" element={
+          <ProtectedRoute>
+            <Layout>
+              <Tweet/>
+            </Layout>
+          </ProtectedRoute>
+        }/>
+        
       </Routes>
     </BrowserRouter>
   )

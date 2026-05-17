@@ -79,6 +79,14 @@ const Navbar = () => {
             >
               Upload Video
             </Link>
+            
+            <Link
+              to="/tweets"
+              onClick={()=> setDropdownOpen(false)}
+              className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition"
+            >
+              Tweets
+            </Link>
 
             <button
               onClick={handleLogout}

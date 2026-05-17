@@ -18,3 +18,9 @@ export const deleteComment = async(commentId)=>{
 
     return response.data.data
 }
+
+const updateComment = async(commentId)=>{
+    const response = await axiosInstance.patch(`/comments/comment/${commentId}`)
+
+    return response.data.data
+}
