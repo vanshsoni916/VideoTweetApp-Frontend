@@ -23,7 +23,8 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-gray-900 border-b border-gray-800 px-6 py-3 flex items-center justify-between fixed top-0 left-0 z-50">
 
-      <Link to="/" className="text-white font-bold text-xl tracking-tight">
+      <Link to="/" className="flex items-center gap-2 text-white font-bold text-xl tracking-tight">
+        <img src="/editor-films-production-svgrepo-com.svg" alt="VideoTweet Logo" className="w-8 h-8" />
         Video<span className="text-blue-500">Tweet</span>
       </Link>
 
