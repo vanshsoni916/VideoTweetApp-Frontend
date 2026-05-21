@@ -1,18 +1,20 @@
+import { lazy, Suspense } from "react"
+
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Toaster } from 'react-hot-toast'
-import ProtectedRoute from "./components/ProtectedRoute.jsx"
-import Login from "./pages/Login.jsx"
-import Register from "./pages/Register.jsx"
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute.jsx"))
+const Login = lazy(() => import("./pages/Login.jsx"))
+const Register = lazy(() => import("./pages/Register.jsx"))
 import { useAuth } from "./context/AuthContext.jsx"
-import Layout from "./components/Layout.jsx"
-import Home from "./pages/Home.jsx"
-import VideoPlayer from "./pages/VideoPlayer.jsx"
-import ForgotPassword from "./pages/ForgotPassword.jsx"
-import UploadVideo from "./pages/UploadVideo.jsx"
-import SearchResult from "./pages/SearchResult.jsx"
-import Profile from "./pages/Profilepage.jsx"
+const Layout = lazy(() => import("./components/Layout.jsx"))
+const Home = lazy(() => import("./pages/Home.jsx"))
+const VideoPlayer = lazy(() => import("./pages/VideoPlayer.jsx"))
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword.jsx"))
+const UploadVideo = lazy(() => import("./pages/UploadVideo.jsx"))
+const SearchResult = lazy(() => import("./pages/SearchResult.jsx"))
+const Profile = lazy(() => import("./pages/Profilepage.jsx"))
 import { Navigate } from "react-router-dom"
-import Tweet from "./pages/Tweet.jsx"
+const Tweet = lazy(() => import("./pages/Tweet.jsx"))
 
 const ProfileRedirect = () => {
   const { user } = useAuth()
@@ -23,71 +25,77 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-right" />
-      <Routes>
+      <Suspense fallback={
+        <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-gray-600 border-t-blue-500 rounded-full animate-spin" />
+        </div>
+      }>
+        <Routes>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
 
-        <Route path="/" element={
-          <ProtectedRoute>
-            <Layout>
-              <Home />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Layout>
+                <Home />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/video/:videoId" element={
-          <ProtectedRoute>
-            <Layout>
-              <VideoPlayer />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/video/:videoId" element={
+            <ProtectedRoute>
+              <Layout>
+                <VideoPlayer />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        <Route path="/upload" element={
-          <ProtectedRoute>
-            <Layout>
-              <UploadVideo />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/upload" element={
+            <ProtectedRoute>
+              <Layout>
+                <UploadVideo />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/search" element={
-          <ProtectedRoute>
-            <Layout>
-              <SearchResult />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/search" element={
+            <ProtectedRoute>
+              <Layout>
+                <SearchResult />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/profile/:username" element={
-          <ProtectedRoute>
-            <Layout>
-              <Profile />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/profile/:username" element={
+            <ProtectedRoute>
+              <Layout>
+                <Profile />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/profile" element={
-          <ProtectedRoute>
-            <Layout>
-              <ProfileRedirect />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Layout>
+                <ProfileRedirect />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        <Route path="/tweets" element={
-          <ProtectedRoute>
-            <Layout>
-              <Tweet/>
-            </Layout>
-          </ProtectedRoute>
-        }/>
-        
-      </Routes>
+          <Route path="/tweets" element={
+            <ProtectedRoute>
+              <Layout>
+                <Tweet />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
