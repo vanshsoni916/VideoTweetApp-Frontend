@@ -88,7 +88,15 @@ const Navbar = () => {
             >
               Tweets
             </Link>
-
+            
+            <Link
+              to="/dashboard"
+              onClick={()=>setDropdownOpen(false)}
+              className = "block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition"
+            >
+              Dashboard
+            </Link>
+            
             <button
               onClick={handleLogout}
               className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-gray-800 transition"

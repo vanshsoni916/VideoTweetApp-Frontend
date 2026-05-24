@@ -14,6 +14,7 @@ const UploadVideo = lazy(() => import("./pages/UploadVideo.jsx"))
 const SearchResult = lazy(() => import("./pages/SearchResult.jsx"))
 const Profile = lazy(() => import("./pages/Profilepage.jsx"))
 import { Navigate } from "react-router-dom"
+const Dashboard = lazy(()=> import("./pages/Dashboard.jsx"))
 const Tweet = lazy(() => import("./pages/Tweet.jsx"))
 
 const ProfileRedirect = () => {
@@ -93,6 +94,14 @@ function App() {
               </Layout>
             </ProtectedRoute>
           } />
+          
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Layout>
+                <Dashboard/>
+              </Layout>
+            </ProtectedRoute>
+          }/>
 
         </Routes>
       </Suspense>
